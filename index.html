@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protof — Solutions Driven by The Future | Dedykowane Oprogramowanie</title>
+  <meta name="description" content="Protof tworzy nowoczesne oprogramowanie dedykowane, systemy zarządzania OmniDesk oraz zaawansowane rozwiązania cyfrowe dla biznesu. Solutions Driven by The Future.">
+  <meta name="keywords" content="Protof, protof.pl, OmniDesk, oprogramowanie dedykowane, systemy ERP, automatyzacja, IT, software house">
+  <meta name="author" content="Protof">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://protof.pl/">
+  <meta property="og:title" content="Protof — Solutions Driven by The Future">
+  <meta property="og:description" content="Projektujemy i rozwijamy dedykowane systemy IT nowej generacji. Poznaj platformę Protof OmniDesk.">
+  <meta property="og:image" content="https://protof.pl/favicon.svg">
+  
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Dynamic Canvas Background -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <svg class="brand-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 30 50 A 20 20 0 1 1 70 50 A 20 20 0 1 1 30 50" stroke="rgba(255,255,255,0.4)" stroke-width="7" fill="none" />
+          <path d="M 50 30 A 20 20 0 1 1 50 70 A 20 20 0 1 1 50 30" stroke="#00ced1" stroke-width="8" fill="none" />
+        </svg>
+        <span class="brand-text"><strong>Protof</strong><span class="brand-dot">.</span>pl</span>
+      </a>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="#about" class="nav-item">O firmie</a>
+        <a href="#solutions" class="nav-item">Rozwiązania</a>
+        <a href="#omnidesk" class="nav-item">OmniDesk</a>
+        <a href="#contact" class="nav-item">Kontakt</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-outline nav-btn">Napisz do nas</a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Przełącz menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+      
+      <div class="container hero-container">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          <span class="badge-text">NOWA GENERACJA SYSTEMÓW DLA BIZNESU</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="title-brand">Protof</span>
+          <span class="title-sub">Solutions Driven by The Future</span>
+        </h1>
+
+        <p class="hero-description">
+          Projektujemy i wdrażamy dedykowane systemy informatyczne, platformy biznesowe oraz architekturę chmurową. 
+          Łączymy precyzję inżynieryjną, wysoką wydajność i intuicyjny design, dostarczając narzędzia przygotowane na wyzwania jutra.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#omnidesk" class="btn btn-primary">
+            <span>Poznaj OmniDesk</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            <span>Skontaktuj się</span>
+          </a>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric-item">
+            <div class="metric-icon">⚡</div>
+            <div class="metric-content">
+              <strong>High Performance</strong>
+              <span>Architektura .NET & Cloud</span>
+            </div>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <div class="metric-icon">🛡️</div>
+            <div class="metric-content">
+              <strong>Niezawodność</strong>
+              <span>Standardy Enterprise & Bezpieczeństwo</span>
+            </div>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <div class="metric-icon">🎯</div>
+            <div class="metric-content">
+              <strong>Skrojone na Miarę</strong>
+              <span>Rozwiązania szyte pod Twój biznes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">O FIRMIE PROTOF</span>
+          <h2 class="section-title">Innowacja napędzana przyszłością</h2>
+          <p class="section-subtitle">
+            Wierzymy, że skuteczne oprogramowanie powinno wyprzedzać potrzeby organizacji, a nie tylko za nimi nadążać.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="glass-card about-card">
+            <div class="card-icon">01</div>
+            <h3>Podejście Inżynieryjne</h3>
+            <p>
+              Stawiamy na solidne fundamenty technologiczne: czysty kod, architekturę modularną, pełną skalowalność i bezkompromisowe bezpieczeństwo danych.
+            </p>
+          </div>
+
+          <div class="glass-card about-card">
+            <div class="card-icon">02</div>
+            <h3>Optymalizacja i Automatyzacja</h3>
+            <p>
+              Eliminujemy powtarzalną pracę i chaos komunikacyjny. Budujemy narzędzia, które integrują rozproszone procesy w jeden płynny ekosystem.
+            </p>
+          </div>
+
+          <div class="glass-card about-card">
+            <div class="card-icon">03</div>
+            <h3>Długofalowe Partnerstwo</h3>
+            <p>
+              Nie dostarczamy "pudełkowych" szablonów. Analizujemy specyfikę operacyjną Twojej firmy i tworzymy oprogramowanie, które rośnie razem z Tobą.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OmniDesk Showcase Section -->
+    <section class="omnidesk-section" id="omnidesk">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag highlight">PRODUKT FLAGOWY</span>
+          <h2 class="section-title">Protof OmniDesk</h2>
+          <p class="section-subtitle">
+            Jedno zintegrowane centrum dowodzenia dla całego Twojego zespołu.
+          </p>
+        </div>
+
+        <div class="omnidesk-mockup-wrapper">
+          <div class="mockup-window glass-card">
+            <div class="window-topbar">
+              <div class="window-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="window-title">Protof OmniDesk — Enterprise Workspace</div>
+              <div class="window-status">
+                <span class="status-live"></span> System Online
+              </div>
+            </div>
+
+            <div class="mockup-body">
+              <!-- Mini Sidebar -->
+              <div class="mockup-sidebar">
+                <div class="mockup-brand">
+                  <svg width="24" height="24" viewBox="0 0 100 100">
+                    <path d="M 30 50 A 20 20 0 1 1 70 50 A 20 20 0 1 1 30 50" stroke="#94a3b8" stroke-width="7" fill="none" />
+                    <path d="M 50 30 A 20 20 0 1 1 50 70 A 20 20 0 1 1 50 30" stroke="#00ced1" stroke-width="8" fill="none" />
+                  </svg>
+                  <span>OmniDesk</span>
+                </div>
+                <div class="mockup-nav-items">
+                  <div class="mockup-nav active">📋 Zadania & Kalendarz</div>
+                  <div class="mockup-nav">🚀 Projekty & Cele</div>
+                  <div class="mockup-nav">🧪 Testy & Jakość</div>
+                  <div class="mockup-nav">📊 Raporty & Analityka</div>
+                  <div class="mockup-nav">🔀 Diagramy Procesowe</div>
+                </div>
+                <div class="mockup-sidebar-tag">
+                  Solutions Driven by The Future
+                </div>
+              </div>
+
+              <!-- Mini Dashboard -->
+              <div class="mockup-content">
+                <div class="dashboard-header">
+                  <div>
+                    <h4>Macierz Priorytetów & Monitor Procesów</h4>
+                    <p class="text-muted">Dynamiczny podział zadań metodą Eisenhowera z automatycznym śledzeniem SLA</p>
+                  </div>
+                  <div class="badge-accent">v2.4 Production</div>
+                </div>
+
+                <div class="matrix-preview-grid">
+                  <div class="matrix-card q1">
+                    <div class="q-label">Ważne & Pilne (Zrób natychmiast)</div>
+                    <div class="matrix-task-item">
+                      <span class="task-bullet"></span> Wdrożenie bramy API produkcyjnej
+                    </div>
+                    <div class="matrix-task-item">
+                      <span class="task-bullet"></span> Weryfikacja certyfikatów SSL
+                    </div>
+                  </div>
+
+                  <div class="matrix-card q2">
+                    <div class="q-label">Ważne, Niepilne (Zaplanuj strategicznie)</div>
+                    <div class="matrix-task-item">
+                      <span class="task-bullet blue"></span> Refaktoryzacja mikroserwisów
+                    </div>
+                    <div class="matrix-task-item">
+                      <span class="task-bullet blue"></span> Wdrożenie modułu analitycznego
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mockup-stats-bar">
+                  <div class="mini-stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Dostępność modułów</span>
+                  </div>
+                  <div class="mini-stat">
+                    <span class="stat-number">&lt; 40ms</span>
+                    <span class="stat-label">Czas odpowiedzi API</span>
+                  </div>
+                  <div class="mini-stat">
+                    <span class="stat-number">E2E</span>
+                    <span class="stat-label">Szyfrowanie i audyt</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="omnidesk-features-grid">
+          <div class="glass-card feat-card">
+            <div class="feat-icon">🎯</div>
+            <h4>Macierz Eisenhowera</h4>
+            <p>Inteligentna kategoryzacja zadań według wagi i pilności, eliminująca gaszenie pożarów w firmie.</p>
+          </div>
+          <div class="glass-card feat-card">
+            <div class="feat-icon">🧩</div>
+            <h4>Architektura Modułowa</h4>
+            <p>Możliwość włączania i dopasowywania poszczególnych modułów systemu według potrzeb użytkownika.</p>
+          </div>
+          <div class="glass-card feat-card">
+            <div class="feat-icon">⚡</div>
+            <h4>Błyskawiczna Integracja</h4>
+            <p>Bezproblemowa współpraca z Outlookiem, Active Directory, usługami chmurowymi i bazami danych.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions / Services -->
+    <section class="solutions-section" id="solutions">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">ZAKRES USŁUG</span>
+          <h2 class="section-title">Co możemy dla Ciebie stworzyć?</h2>
+          <p class="section-subtitle">
+            Dostarczamy pełen cykl wytwórczy oprogramowania — od koncepcji po utrzymanie produkcyjne.
+          </p>
+        </div>
+
+        <div class="solutions-grid">
+          <div class="glass-card solution-item">
+            <div class="sol-badge">Backend & Web</div>
+            <h3>Dedykowane Aplikacje & API</h3>
+            <p>
+              Projektujemy i rozwijamy wysokowydajne platformy internetowe w oparciu o technologię .NET oraz nowoczesne frameworki frontendowe.
+            </p>
+            <ul class="sol-list">
+              <li>Bezpieczne RESTful API i architektura mikroserwisów</li>
+              <li>Wysoka wydajność bazodanowa (SQL, optymalizacja zapytań)</li>
+              <li>Responsywne, intuicyjne interfejsy użytkownika</li>
+            </ul>
+          </div>
+
+          <div class="glass-card solution-item">
+            <div class="sol-badge">Optymalizacja</div>
+            <h3>Automatyzacja & Cyfryzacja</h3>
+            <p>
+              Zamieniamy skomplikowane arkusze kalkulacyjne i nieefektywne procedury w szybkie, zautomatyzowane aplikacje webowe.
+            </p>
+            <ul class="sol-list">
+              <li>Eliminacja ręcznego przepisywania danych</li>
+              <li>Integracje z systemami zewnętrznymi (ERP, CRM, NBP, płatności)</li>
+              <li>Generowanie raportów biznesowych w czasie rzeczywistym</li>
+            </ul>
+          </div>
+
+          <div class="glass-card solution-item">
+            <div class="sol-badge">Infrastruktura</div>
+            <h3>Konsulting & Architektura IT</h3>
+            <p>
+              Pomagamy dobrać optymalny stos technologiczny, zapewnić ciągłość działania i zoptymalizować koszty utrzymania serwerów.
+            </p>
+            <ul class="sol-list">
+              <li>Audyty wydajności i bezpieczeństwa kodu</li>
+              <li>Wdrażanie strategii CI/CD oraz automatycznych testów</li>
+              <li>Wsparcie w doborze i konfiguracji środowisk chmurowych</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="glass-card contact-wrapper">
+          <div class="contact-info">
+            <span class="section-tag highlight">SKONTAKTUJ SIĘ</span>
+            <h2 class="contact-title">Zbudujmy coś niezwykłego razem.</h2>
+            <p class="contact-desc">
+              Masz pomysł na system, potrzebujesz dedykowanego oprogramowania lub chcesz wdrożyć Protof OmniDesk w swojej organizacji? 
+              Skontaktuj się z nami — odpowiemy na każde zapytanie.
+            </p>
+
+            <div class="contact-details">
+              <div class="contact-card">
+                <div class="detail-icon">✉️</div>
+                <div class="detail-body">
+                  <span class="detail-label">Adres e-mail:</span>
+                  <a href="mailto:kontakt@protof.pl" class="detail-val" id="email-link">kontakt@protof.pl</a>
+                </div>
+                <button class="btn-copy" id="btn-copy-email" title="Kopiuj email">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span class="copy-text">Kopiuj</span>
+                </button>
+              </div>
+
+              <div class="contact-card">
+                <div class="detail-icon">🌐</div>
+                <div class="detail-body">
+                  <span class="detail-label">Oficjalna domena:</span>
+                  <span class="detail-val">protof.pl</span>
+                </div>
+              </div>
+
+              <div class="status-pill">
+                <span class="status-indicator"></span>
+                <span>Aktualnie przyjmujemy nowe projekty</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-side">
+            <form class="quick-form" id="contact-form">
+              <h3 class="form-title">Szybka wiadomość</h3>
+              
+              <div class="form-group">
+                <label for="form-name">Twoje imię / Firma</label>
+                <input type="text" id="form-name" required placeholder="np. Jan Kowalski">
+              </div>
+
+              <div class="form-group">
+                <label for="form-email">Twój adres e-mail</label>
+                <input type="email" id="form-email" required placeholder="twoj.email@firma.pl">
+              </div>
+
+              <div class="form-group">
+                <label for="form-message">W czym możemy pomóc?</label>
+                <textarea id="form-message" rows="4" required placeholder="Krótki opis projektu lub zadania..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">
+                <span>Wyślij zapytanie</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+              <p class="form-hint">Formularz automatycznie otworzy Twojego klienta poczty lub przygotuje gotową wiadomość.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand-col">
+        <div class="footer-brand">
+          <svg class="brand-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+            <path d="M 30 50 A 20 20 0 1 1 70 50 A 20 20 0 1 1 30 50" stroke="rgba(255,255,255,0.4)" stroke-width="7" fill="none" />
+            <path d="M 50 30 A 20 20 0 1 1 50 70 A 20 20 0 1 1 50 30" stroke="#00ced1" stroke-width="8" fill="none" />
+          </svg>
+          <span class="footer-brand-name">Protof</span>
+        </div>
+        <p class="footer-slogan">Solutions Driven by The Future</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#about">O nas</a>
+        <a href="#solutions">Rozwiązania</a>
+        <a href="#omnidesk">OmniDesk</a>
+        <a href="#contact">Kontakt</a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Protof (protof.pl). Wszelkie prawa zastrzeżone.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">Adres e-mail skopiowany do schowka!</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
