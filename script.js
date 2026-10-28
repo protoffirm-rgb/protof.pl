@@ -1,5 +1,5 @@
 /* ===================================================================
-   Protof Interactive Experience & Canvas Animation
+   PROTOF Interactive Experience, Canvas Animation & OmniDesk Tabs
    =================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -180,5 +180,71 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast('Otwieranie programu pocztowego...');
     });
   }
+
+  // 6. OMNIDESK INTERACTIVE TABS SWITCHING
+  function switchOmniDeskTab(targetTab) {
+    if (!targetTab) return;
+
+    // A. Update Top Workspace Tabs
+    const topTabs = document.querySelectorAll('.workspace-tab');
+    topTabs.forEach(t => {
+      if (t.getAttribute('data-target') === targetTab) {
+        t.classList.add('active');
+      } else {
+        t.classList.remove('active');
+      }
+    });
+
+    // B. Update Sidebar Items
+    const sidebarItems = document.querySelectorAll('.sidebar-item');
+    sidebarItems.forEach(item => {
+      if (item.getAttribute('data-target') === targetTab) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
+    // C. Switch View Panels
+    const panels = document.querySelectorAll('.view-panel');
+    panels.forEach(p => {
+      if (p.id === 'panel-' + targetTab) {
+        p.classList.add('active');
+      } else {
+        p.classList.remove('active');
+      }
+    });
+  }
+
+  // Bind clicks on Top Tabs
+  document.querySelectorAll('.workspace-tab').forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      // Don't switch if clicking the close icon
+      if (e.target.classList.contains('tab-close')) return;
+      const target = tab.getAttribute('data-target');
+      switchOmniDeskTab(target);
+    });
+  });
+
+  // Bind clicks on Sidebar Items
+  document.querySelectorAll('.sidebar-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const target = item.getAttribute('data-target');
+      switchOmniDeskTab(target);
+    });
+  });
+
+  // Bind clicks on Feature Cards below Mockup
+  document.querySelectorAll('.feat-card[data-switch]').forEach(card => {
+    card.addEventListener('click', () => {
+      const target = card.getAttribute('data-switch');
+      switchOmniDeskTab(target);
+      // Smooth scroll to mockup
+      const mockupEl = document.querySelector('.omnidesk-mockup-wrapper');
+      if (mockupEl) {
+        mockupEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  });
 
 });
