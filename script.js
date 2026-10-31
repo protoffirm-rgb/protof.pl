@@ -162,22 +162,125 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3200);
   }
 
-  // 5. Contact Form Submission Handling
+  // 5. Contact Form Submission Handling (Cloudflare Worker + Microsoft Graph)
+  // =========================================================================
+  // KONFIGURACJA ENDPOINTU FORMULARZA:
+  const CONTACT_API_URL = 'https://contact-api.protof.pl';
+  // Klucz Site Key z Cloudflare Turnstile (aktywny widżet anty-bot):
+  const TURNSTILE_SITE_KEY = '0x4AAAAAAFt9mY2GRw1-dw8m';
+  // =========================================================================
+
   const contactForm = document.getElementById('contact-form');
+  const turnstileContainer = document.getElementById('turnstile-container');
+  let turnstileWidgetId = null;
+
+  if (TURNSTILE_SITE_KEY && turnstileContainer) {
+    window.onProtofTurnstileLoad = () => {
+      if (window.turnstile) {
+        turnstileWidgetId = window.turnstile.render(turnstileContainer, {
+          sitekey: TURNSTILE_SITE_KEY,
+          theme: 'dark'
+        });
+      }
+    };
+    const tsScript = document.createElement('script');
+    tsScript.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onProtofTurnstileLoad&render=explicit';
+    tsScript.async = true;
+    tsScript.defer = true;
+    document.head.appendChild(tsScript);
+  }
+
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    const submitBtn = document.getElementById('btn-submit-contact');
+    const submitText = document.getElementById('btn-submit-text');
+    const submitIcon = document.getElementById('btn-submit-icon');
+    const statusBox = document.getElementById('form-status');
+
+    function setFormStatus(type, message) {
+      if (!statusBox) return;
+      statusBox.className = 'form-status' + (type ? ` ${type}` : '');
+      statusBox.textContent = message || '';
+    }
+
+    function setSubmitting(isSubmitting) {
+      if (!submitBtn || !submitText) return;
+      submitBtn.disabled = isSubmitting;
+      if (isSubmitting) {
+        submitText.textContent = 'Wysyłanie wiadomości...';
+        if (submitIcon) submitIcon.style.display = 'none';
+        if (!submitBtn.querySelector('.btn-spinner')) {
+          const spinner = document.createElement('span');
+          spinner.className = 'btn-spinner';
+          submitBtn.appendChild(spinner);
+        }
+      } else {
+        submitText.textContent = 'Wyślij zapytanie';
+        if (submitIcon) submitIcon.style.display = '';
+        const spinner = submitBtn.querySelector('.btn-spinner');
+        if (spinner) spinner.remove();
+      }
+    }
+
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      setFormStatus('', '');
+
       const name = document.getElementById('form-name').value.trim();
       const email = document.getElementById('form-email').value.trim();
       const message = document.getElementById('form-message').value.trim();
+      const sendCopyEl = document.getElementById('form-send-copy');
+      const websiteEl = document.getElementById('form-website');
 
-      const subject = encodeURIComponent(`Zapytanie ze strony protof.pl od: ${name}`);
-      const body = encodeURIComponent(`Nadawca: ${name}\nEmail: ${email}\n\nWiadomość:\n${message}`);
+      const sendCopy = sendCopyEl ? sendCopyEl.checked : false;
+      const website = websiteEl ? websiteEl.value : '';
 
-      // Open mailto link
-      window.location.href = `mailto:kontakt@protof.pl?subject=${subject}&body=${body}`;
+      let turnstileToken = '';
+      if (TURNSTILE_SITE_KEY && window.turnstile && turnstileWidgetId !== null) {
+        turnstileToken = window.turnstile.getResponse(turnstileWidgetId) || '';
+        if (!turnstileToken) {
+          setFormStatus('error', 'Potwierdź krótką weryfikację anty-spam powyżej przed wysłaniem.');
+          return;
+        }
+      }
 
-      showToast('Otwieranie programu pocztowego...');
+      setSubmitting(true);
+
+      try {
+        const res = await fetch(CONTACT_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            message,
+            sendCopy,
+            website,
+            turnstileToken
+          })
+        });
+
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok && data.ok) {
+          contactForm.reset();
+          if (TURNSTILE_SITE_KEY && window.turnstile && turnstileWidgetId !== null) {
+            window.turnstile.reset(turnstileWidgetId);
+          }
+
+          const successMsg = sendCopy
+            ? `Dziękujemy! Wiadomość została wysłana do zespołu PROTOF, a kopia potwierdzenia trafiła na adres ${email}.`
+            : 'Dziękujemy! Wiadomość została wysłana na kontakt@protof.pl — odpowiemy najszybciej, jak to możliwe.';
+
+          setFormStatus('success', successMsg);
+          showToast('Wiadomość została wysłana!');
+        } else {
+          setFormStatus('error', data.error || 'Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz bezpośrednio na kontakt@protof.pl.');
+        }
+      } catch (err) {
+        setFormStatus('error', 'Brak połączenia z serwerem formularza. Napisz bezpośrednio na adres kontakt@protof.pl.');
+      } finally {
+        setSubmitting(false);
+      }
     });
   }
 

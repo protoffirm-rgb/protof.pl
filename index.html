@@ -1056,11 +1056,31 @@
                 <textarea id="form-message" rows="4" required placeholder="Krótki opis aplikacji, pulpitu lub zadania..."></textarea>
               </div>
 
-              <button type="submit" class="btn btn-primary btn-block">
-                <span>Wyślij zapytanie</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              <!-- Ukryte pole anty-spam (Honeypot) -->
+              <div class="hp-field" aria-hidden="true">
+                <label for="form-website">Strona www</label>
+                <input type="text" id="form-website" name="website" tabindex="-1" autocomplete="off">
+              </div>
+
+              <label class="form-checkbox-row" for="form-send-copy">
+                <input type="checkbox" id="form-send-copy">
+                <span class="checkbox-custom" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                <span class="checkbox-label-text">Wyślij kopię wiadomości na mój adres e-mail</span>
+              </label>
+
+              <!-- Kontener na widżet anty-spam Cloudflare Turnstile (aktywowany automatycznie po wpisaniu klucza w script.js) -->
+              <div id="turnstile-container" class="turnstile-wrapper"></div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="btn-submit-contact">
+                <span id="btn-submit-text">Wyślij zapytanie</span>
+                <svg id="btn-submit-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
               </button>
-              <p class="form-hint">Formularz przygotuje gotową wiadomość e-mail.</p>
+
+              <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+
+              <p class="form-hint">Wiadomość trafi bezpośrednio na skrzynkę kontakt@protof.pl.</p>
             </form>
           </div>
         </div>

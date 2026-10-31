@@ -2710,3 +2710,132 @@ section {
     display: none;
   }
 }
+
+
+/* ===================================================================
+   Contact Form — Direct Send, Copy Checkbox, Turnstile & Status Box
+   =================================================================== */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.form-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 18px;
+  padding: 10px 12px;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  user-select: none;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.form-checkbox-row:hover {
+  border-color: rgba(0, 206, 209, 0.4);
+  background: rgba(15, 23, 42, 0.7);
+}
+
+.form-checkbox-row input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-custom {
+  width: 19px;
+  height: 19px;
+  border-radius: 5px;
+  border: 1.5px solid rgba(148, 163, 184, 0.5);
+  background: rgba(7, 11, 20, 0.8);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  flex-shrink: 0;
+  transition: all 0.18s ease;
+}
+
+.form-checkbox-row input[type="checkbox"]:checked + .checkbox-custom {
+  background: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  color: #04101e;
+  box-shadow: 0 0 12px rgba(0, 206, 209, 0.4);
+}
+
+.form-checkbox-row input[type="checkbox"]:focus-visible + .checkbox-custom {
+  box-shadow: 0 0 0 3px rgba(0, 206, 209, 0.3);
+}
+
+.checkbox-label-text {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.form-checkbox-row input[type="checkbox"]:checked ~ .checkbox-label-text {
+  color: var(--text-main);
+}
+
+.turnstile-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.turnstile-wrapper:empty {
+  display: none;
+  margin-bottom: 0;
+}
+
+#btn-submit-contact:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(4, 16, 30, 0.25);
+  border-top-color: #04101e;
+  border-radius: 50%;
+  animation: contactSpin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes contactSpin {
+  to { transform: rotate(360deg); }
+}
+
+.form-status {
+  display: none;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.form-status.success {
+  display: block;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34d399;
+}
+
+.form-status.error {
+  display: block;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
