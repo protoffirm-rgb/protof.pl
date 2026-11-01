@@ -44,11 +44,14 @@ html {
   color: var(--text-main);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
   position: relative;
   overflow-x: hidden;
+  max-width: 100%;
   min-height: 100vh;
 }
 
@@ -2718,9 +2721,9 @@ section {
 
   /* Keep full desktop width on mobile, ready for JS scale() */
   .mockup-window {
-    width: 1000px !important;
-    min-width: 1000px !important;
-    max-width: 1000px !important;
+    width: 1160px !important;
+    min-width: 1160px !important;
+    max-width: 1160px !important;
     transform-origin: top left;
     margin: 0 !important;
     box-sizing: border-box;
@@ -2860,4 +2863,87 @@ section {
   background: rgba(239, 68, 68, 0.12);
   border: 1px solid rgba(239, 68, 68, 0.35);
   color: #fca5a5;
+}
+
+/* ===================================================================
+   GLOBAL MOBILE OVERFLOW & CUT-OFF PREVENTION
+   =================================================================== */
+@media (max-width: 992px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr !important;
+    padding: 24px 16px !important;
+    gap: 24px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  .quick-form {
+    padding: 20px 14px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  .contact-card {
+    padding: 12px 14px !important;
+    gap: 12px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  .turnstile-wrapper {
+    max-width: 100% !important;
+    overflow: hidden !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .turnstile-wrapper iframe {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px !important;
+  }
+
+  .about-grid, .solutions-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .about-card, .solution-item {
+    padding: 24px 18px !important;
+    box-sizing: border-box !important;
+  }
+
+  .wms-banner {
+    padding: 24px 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .wms-content {
+    gap: 18px !important;
+  }
+
+  .wms-text-col {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .btn-wms {
+    width: 100% !important;
+    justify-content: center !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+
+  .hero-metrics {
+    padding: 16px 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-title .title-brand {
+    word-break: break-word !important;
+  }
 }

@@ -374,17 +374,17 @@ document.addEventListener('DOMContentLoaded', () => {
         mockupWrapper.style.height = '';
         mockupWindow.style.transform = '';
         mockupWindow.style.transformOrigin = '';
-        mockupWindow.style.width = '1000px';
-        mockupWindow.style.minWidth = '1000px';
-        mockupWindow.style.maxWidth = '1000px';
+        mockupWindow.style.width = '1160px';
+        mockupWindow.style.minWidth = '1160px';
+        mockupWindow.style.maxWidth = '1160px';
       } else {
         // Mode: Scaled to fit mobile container width (identic to PC)
         mockupWrapper.classList.remove('mode-scroll');
         mockupWrapper.scrollLeft = 0;
 
-        const containerWidth = mockupWrapper.parentElement ? mockupWrapper.parentElement.clientWidth : mockupWrapper.clientWidth;
-        const baseWidth = 1000;
-        const scale = Math.min(containerWidth / baseWidth, 1);
+        const availableWidth = mockupWrapper.getBoundingClientRect().width || mockupWrapper.clientWidth;
+        const baseWidth = 1160;
+        const scale = Math.min(availableWidth / baseWidth, 1);
 
         mockupWindow.style.transform = 'scale(' + scale + ')';
         mockupWindow.style.transformOrigin = 'top left';
