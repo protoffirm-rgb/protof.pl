@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="preconnect">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=20261101c">
+  <link rel="stylesheet" href="style.css?v=20261101d">
 </head>
 <body>
 
@@ -249,7 +249,7 @@
                     <span class="sidebar-item-text">Zadania</span>
                   </div>
                   <div class="sidebar-item" data-target="projekty">
-                    <span class="sidebar-item-icon">📁</span>
+                    <span class="sidebar-item-icon">📁&#xFE0F;</span>
                     <span class="sidebar-item-text">Projekty</span>
                   </div>
                   <div class="sidebar-item" data-target="testy">
@@ -257,7 +257,7 @@
                     <span class="sidebar-item-text">Testy</span>
                   </div>
                   <div class="sidebar-item" data-target="diagramy">
-                    <span class="sidebar-item-icon">🔀</span>
+                    <span class="sidebar-item-icon">🔀&#xFE0F;</span>
                     <span class="sidebar-item-text">Diagramy</span>
                   </div>
                   <div class="sidebar-item active" data-target="raporty">
@@ -893,22 +893,53 @@
         <!-- OmniDesk Key Modules Grid below mockup -->
         <div class="omnidesk-features-grid">
           <div class="glass-card feat-card" data-switch="raporty">
-            <div class="feat-icon">📊</div>
+            <div class="feat-icon feat-icon-raporty">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="13" width="4" height="8" rx="1.5" fill="#10b981" />
+                <rect x="10" y="5" width="4" height="16" rx="1.5" fill="#00ced1" />
+                <rect x="17" y="9" width="4" height="12" rx="1.5" fill="#3b82f6" />
+                <path d="M4 9L10 4L18 7" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
             <h4>Raporty & Zaawansowane KPI</h4>
             <p>Cycle Time, Lead Time, wskaźniki opóźnień, Story Points oraz interaktywne słupkowe trendy terminowości.</p>
           </div>
           <div class="glass-card feat-card" data-switch="diagramy">
-            <div class="feat-icon">🔀</div>
+            <div class="feat-icon feat-icon-diagramy">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="3" width="6" height="6" rx="1.5" fill="#f59e0b" />
+                <rect x="2" y="15" width="6" height="6" rx="1.5" fill="#f59e0b" />
+                <rect x="16" y="9" width="6" height="6" rx="1.5" fill="#fbbf24" />
+                <path d="M8 6H11C12.5 6 13 8 13 10V14C13 16 13.5 18 15 18H16" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round" />
+                <path d="M8 18H11C12 18 12.5 17 12.8 15.5" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" />
+                <path d="M13 12H16" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+            </div>
             <h4>Diagramy & Schematy Blokowe</h4>
             <p>Interaktywny edytor procesów, relacji bazodanowych i przepływów danych z eksportem do PNG oraz JSON.</p>
           </div>
           <div class="glass-card feat-card" data-switch="testy">
-            <div class="feat-icon">🧪</div>
+            <div class="feat-icon feat-icon-testy">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 3H15M10 3V8.5L5.2 16.8C4.5 18 5.4 19.5 6.8 19.5H17.2C18.6 19.5 19.5 18 18.8 16.8L14 8.5V3" stroke="#c084fc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(168, 85, 247, 0.2)" />
+                <path d="M6.5 15.5C8 14.5 10 16.5 12 15.5C14 14.5 16 16.5 17.5 15.5" stroke="#a855f7" stroke-width="1.6" stroke-linecap="round" />
+                <circle cx="9.5" cy="17.5" r="1" fill="#e9d5ff" />
+                <circle cx="13" cy="17" r="1.3" fill="#e9d5ff" />
+                <circle cx="14.5" cy="14" r="0.8" fill="#e9d5ff" />
+              </svg>
+            </div>
             <h4>Zadania Testowe & QA</h4>
             <p>Pełna struktura scenariuszy testowych, śledzenie kroków, warunki początkowe i natychmiastowa weryfikacja jakości.</p>
           </div>
           <div class="glass-card feat-card" data-switch="projekty">
-            <div class="feat-icon">📁</div>
+            <div class="feat-icon feat-icon-projekty">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 6.5C3 5.39543 3.89543 4.5 5 4.5H9.2C9.73043 4.5 10.2391 4.71071 10.6142 5.08579L12 6.5H19C20.1046 6.5 21 7.39543 21 8.5V17.5C21 18.6046 20.1046 19.5 19 19.5H5C3.89543 19.5 3 18.6046 3 17.5V6.5Z" fill="#ea580c" stroke="#f97316" stroke-width="1.5" />
+                <path d="M3 9.5H21" stroke="#fb923c" stroke-width="1.2" />
+                <rect x="6.5" y="12" width="4" height="2" rx="1" fill="#fff" />
+                <rect x="11.5" y="14.5" width="6" height="2" rx="1" fill="#ffedd5" />
+              </svg>
+            </div>
             <h4>Projekty WBS & Wykres Gantta</h4>
             <p>Drzewo struktury zadań, harmonogramowanie na osi czasu z automatycznym śledzeniem postępów i eksportem do Excela.</p>
           </div>
@@ -1128,6 +1159,6 @@
   <!-- Toast Notification -->
   <div class="toast" id="toast">Adres e-mail skopiowany do schowka!</div>
 
-  <script src="script.js?v=20261101c"></script>
+  <script src="script.js?v=20261101d"></script>
 </body>
 </html>

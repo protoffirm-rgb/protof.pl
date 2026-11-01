@@ -2553,8 +2553,58 @@ section {
 }
 
 .feat-icon {
-  font-size: 1.8rem;
-  margin-bottom: 12px;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.feat-icon svg {
+  display: block;
+}
+
+.feat-icon-raporty {
+  background: rgba(0, 206, 209, 0.12);
+  border: 1px solid rgba(0, 206, 209, 0.3);
+  box-shadow: 0 0 16px rgba(0, 206, 209, 0.2);
+}
+.feat-card:hover .feat-icon-raporty {
+  box-shadow: 0 0 24px rgba(0, 206, 209, 0.45);
+  transform: scale(1.08);
+}
+
+.feat-icon-diagramy {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.2);
+}
+.feat-card:hover .feat-icon-diagramy {
+  box-shadow: 0 0 24px rgba(245, 158, 11, 0.45);
+  transform: scale(1.08);
+}
+
+.feat-icon-testy {
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.2);
+}
+.feat-card:hover .feat-icon-testy {
+  box-shadow: 0 0 24px rgba(168, 85, 247, 0.45);
+  transform: scale(1.08);
+}
+
+.feat-icon-projekty {
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.2);
+}
+.feat-card:hover .feat-icon-projekty {
+  box-shadow: 0 0 24px rgba(249, 115, 22, 0.45);
+  transform: scale(1.08);
 }
 .feat-card h4 {
   font-size: 1rem;
