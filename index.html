@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="preconnect">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=20261031">
+  <link rel="stylesheet" href="style.css?v=20261101">
 </head>
 <body>
 
@@ -167,8 +167,17 @@
           </p>
         </div>
 
+        <!-- Mobile View Control Toolbar (widoczny tylko na telefonie i tablecie) -->
+        <div class="mockup-mobile-toolbar" id="mockup-mobile-toolbar">
+          <span class="mobile-hint">💻 Podgląd OmniDesk jak na PC</span>
+          <button type="button" class="btn-toggle-mockup-zoom" id="btn-toggle-mockup-zoom" aria-label="Przełącz tryb widoku">
+            <span class="zoom-icon">🔍</span>
+            <span class="zoom-label">Powiększ (przewijaj)</span>
+          </button>
+        </div>
+
         <!-- Interactive Realistic Mockup -->
-        <div class="omnidesk-mockup-wrapper">
+        <div class="omnidesk-mockup-wrapper" id="omnidesk-mockup-wrapper">
           <div class="mockup-window glass-card">
             
             <!-- Window Topbar -->
@@ -1119,6 +1128,6 @@
   <!-- Toast Notification -->
   <div class="toast" id="toast">Adres e-mail skopiowany do schowka!</div>
 
-  <script src="script.js?v=20261031"></script>
+  <script src="script.js?v=20261101"></script>
 </body>
 </html>

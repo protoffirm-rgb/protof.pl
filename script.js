@@ -317,6 +317,11 @@ document.addEventListener('DOMContentLoaded', () => {
         p.classList.remove('active');
       }
     });
+
+    // Recalculate scaled height after switching tab
+    if (typeof updateOmniDeskScale === 'function') {
+      updateOmniDeskScale();
+    }
   }
 
   // Bind clicks on Top Tabs
@@ -349,5 +354,87 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // 7. OMNIDESK MOBILE SCALING & PROPORTIONAL DESKTOP FIT
+  const mockupWrapper = document.getElementById('omnidesk-mockup-wrapper') || document.querySelector('.omnidesk-mockup-wrapper');
+  const mockupWindow = document.querySelector('.mockup-window');
+  const zoomBtn = document.getElementById('btn-toggle-mockup-zoom');
+  const zoomIcon = zoomBtn ? zoomBtn.querySelector('.zoom-icon') : null;
+  const zoomLabel = zoomBtn ? zoomBtn.querySelector('.zoom-label') : null;
+
+  let isMockupZoomed = false;
+
+  function updateOmniDeskScale() {
+    if (!mockupWrapper || !mockupWindow) return;
+
+    if (window.innerWidth <= 992) {
+      if (isMockupZoomed) {
+        // Mode: Scrollable full width (1000px)
+        mockupWrapper.classList.add('mode-scroll');
+        mockupWrapper.style.height = '';
+        mockupWindow.style.transform = '';
+        mockupWindow.style.transformOrigin = '';
+        mockupWindow.style.width = '1000px';
+        mockupWindow.style.minWidth = '1000px';
+        mockupWindow.style.maxWidth = '1000px';
+      } else {
+        // Mode: Scaled to fit mobile container width (identic to PC)
+        mockupWrapper.classList.remove('mode-scroll');
+        mockupWrapper.scrollLeft = 0;
+
+        const containerWidth = mockupWrapper.parentElement ? mockupWrapper.parentElement.clientWidth : mockupWrapper.clientWidth;
+        const baseWidth = 1000;
+        const scale = Math.min(containerWidth / baseWidth, 1);
+
+        mockupWindow.style.transform = 'scale(' + scale + ')';
+        mockupWindow.style.transformOrigin = 'top left';
+        mockupWindow.style.width = baseWidth + 'px';
+        mockupWindow.style.minWidth = baseWidth + 'px';
+        mockupWindow.style.maxWidth = baseWidth + 'px';
+
+        const unscaledHeight = mockupWindow.offsetHeight;
+        if (unscaledHeight > 0) {
+          mockupWrapper.style.height = Math.ceil(unscaledHeight * scale) + 'px';
+        }
+      }
+    } else {
+      // Desktop (> 992px): Reset all scaling
+      mockupWrapper.classList.remove('mode-scroll');
+      mockupWrapper.style.height = '';
+      mockupWindow.style.transform = '';
+      mockupWindow.style.transformOrigin = '';
+      mockupWindow.style.width = '';
+      mockupWindow.style.minWidth = '';
+      mockupWindow.style.maxWidth = '';
+    }
+  }
+
+  if (zoomBtn) {
+    zoomBtn.addEventListener('click', () => {
+      isMockupZoomed = !isMockupZoomed;
+      if (isMockupZoomed) {
+        if (zoomIcon) zoomIcon.textContent = '📱';
+        if (zoomLabel) zoomLabel.textContent = 'Dopasuj do ekranu';
+      } else {
+        if (zoomIcon) zoomIcon.textContent = '🔍';
+        if (zoomLabel) zoomLabel.textContent = 'Powiększ (przewijaj)';
+      }
+      updateOmniDeskScale();
+    });
+  }
+
+  window.addEventListener('resize', updateOmniDeskScale);
+  window.addEventListener('orientationchange', updateOmniDeskScale);
+
+  updateOmniDeskScale();
+  setTimeout(updateOmniDeskScale, 150);
+  setTimeout(updateOmniDeskScale, 600);
+
+  if (window.ResizeObserver && mockupWindow) {
+    const ro = new ResizeObserver(() => {
+      updateOmniDeskScale();
+    });
+    ro.observe(mockupWindow);
+  }
 
 });

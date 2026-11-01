@@ -1099,20 +1099,6 @@ section {
     padding: 32px 24px;
   }
   
-  .mockup-body {
-    flex-direction: column;
-  }
-
-  .mockup-sidebar {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid var(--surface-border);
-  }
-
-  .mockup-nav-items {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1152,9 +1138,6 @@ section {
     display: none;
   }
 
-  .matrix-preview-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 
@@ -2665,49 +2648,88 @@ section {
   border-color: rgba(0, 206, 209, 0.3);
 }
 
-/* Responsive adjustments */
+/* ===================================================================
+   OMNIDESK MOBILE SCALING & RESPONSIVE BEHAVIOR
+   =================================================================== */
+
+.mockup-mobile-toolbar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 8px 14px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+}
+
+.mockup-mobile-toolbar .mobile-hint {
+  color: var(--accent-cyan);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-toggle-mockup-zoom {
+  background: rgba(0, 206, 209, 0.12);
+  border: 1px solid rgba(0, 206, 209, 0.35);
+  color: #fff;
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.btn-toggle-mockup-zoom:hover {
+  background: rgba(0, 206, 209, 0.25);
+  border-color: var(--accent-cyan);
+}
+
 @media (max-width: 992px) {
-  .kpi-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .status-boxes-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
   .omnidesk-features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .diagrams-split, .testy-body-split {
-    flex-direction: column;
-    height: auto;
+
+  .mockup-mobile-toolbar {
+    display: flex;
   }
-  .diagrams-sidebar, .testy-sidebar {
+
+  .omnidesk-mockup-wrapper {
     width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 16px;
+    -webkit-overflow-scrolling: touch;
+    transition: height 0.2s ease;
   }
-  .mockup-sidebar {
-    width: 60px;
-    padding: 12px 6px;
+
+  .omnidesk-mockup-wrapper.mode-scroll {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding-bottom: 10px;
   }
-  .sidebar-item-text, .mockup-sidebar-footer {
-    display: none;
-  }
-  .sidebar-item {
-    justify-content: center;
-    padding: 10px;
+
+  /* Keep full desktop width on mobile, ready for JS scale() */
+  .mockup-window {
+    width: 1000px !important;
+    min-width: 1000px !important;
+    max-width: 1000px !important;
+    transform-origin: top left;
+    margin: 0 !important;
+    box-sizing: border-box;
   }
 }
 
 @media (max-width: 640px) {
-  .kpi-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .status-boxes-grid {
-    grid-template-columns: 1fr;
-  }
   .omnidesk-features-grid {
     grid-template-columns: 1fr;
-  }
-  .window-center, .window-right-actions {
-    display: none;
   }
 }
 
